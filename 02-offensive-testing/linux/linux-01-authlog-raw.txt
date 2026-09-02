@@ -1,0 +1,32 @@
+Raw /var/log/auth.log excerpt — SSH brute-force attack from Kali (192.168.220.143)
+against linux-target (192.168.220.145), captured 2026-09-02.
+
+2026-09-02T05:26:36.819758+00:00 ubuntu unix_chkpwd[6632]: password check failed for user (ninjax)
+2026-09-02T05:26:36.821750+00:00 ubuntu unix_chkpwd[6634]: password check failed for user (ninjax)
+2026-09-02T05:26:37.033358+00:00 ubuntu sshd[1231]: drop connection #3 from [192.168.220.143]:58872 on [192.168.220.145]:22
+2026-09-02T05:26:37.261705+00:00 ubuntu sshd[1231]: drop connection #3 from [192.168.220.143]:58876 on [192.168.220.145]:22
+2026-09-02T05:26:37.488742+00:00 ubuntu sshd[1231]: drop connection #3 from [192.168.220.143]:58900 on [192.168.220.145]:22
+2026-09-02T05:26:37.948242+00:00 ubuntu sshd[1231]: drop connection #3 from [192.168.220.143]:58940 on [192.168.220.145]:22
+2026-09-02T05:26:38.463087+00:00 ubuntu sshd-session[6605]: Failed password for ninjax from 192.168.220.143 port 51924 ssh2
+2026-09-02T05:26:38.632763+00:00 ubuntu sshd[1231]: drop connection #3 from [192.168.220.143]:58952 on [192.168.220.145]:22
+2026-09-02T05:26:38.777429+00:00 ubuntu sshd-session[6609]: Failed password for ninjax from 192.168.220.143 port 51942 ssh2
+2026-09-02T05:26:38.777429+00:00 ubuntu sshd-session[6609]: error: maximum authentication attempts exceeded for ninjax from 192.168.220.143 port 51942 ssh2
+2026-09-02T05:26:38.777810+00:00 ubuntu sshd-session[6609]: Disconnecting authenticating user ninjax 192.168.220.143 port 51942: Too many authentication failures
+2026-09-02T05:26:38.778002+00:00 ubuntu sshd-session[6609]: PAM 5 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.220.143
+2026-09-02T05:26:38.778122+00:00 ubuntu sshd-session[6609]: PAM service(sshd) ignoring max retries; 6 > 3
+2026-09-02T05:26:38.782423+00:00 ubuntu unix_chkpwd[6635]: password check failed for user (ninjax)
+2026-09-02T05:26:39.290295+00:00 ubuntu sshd-session[6614]: Failed password for ninjax from 192.168.220.143 port 51958 ssh2
+2026-09-02T05:26:40.771752+00:00 ubuntu unix_chkpwd[6636]: password check failed for user (ninjax)
+2026-09-02T05:26:41.117735+00:00 ubuntu sshd-session[6605]: Failed password for ninjax from 192.168.220.143 port 51924 ssh2
+2026-09-02T05:26:42.780697+00:00 ubuntu sshd-session[6614]: Failed password for ninjax from 192.168.220.143 port 51958 ssh2
+2026-09-02T05:26:42.790474+00:00 ubuntu sshd-session[6605]: error: maximum authentication attempts exceeded for ninjax from 192.168.220.143 port 51924 ssh2
+2026-09-02T05:26:42.790872+00:00 ubuntu sshd-session[6605]: Disconnecting authenticating user ninjax 192.168.220.143 port 51924: Too many authentication failures
+2026-09-02T05:26:42.794797+00:00 ubuntu sshd-session[6605]: PAM 5 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.220.143
+2026-09-02T05:26:42.795116+00:00 ubuntu sshd-session[6605]: PAM service(sshd) ignoring max retries; 6 > 3
+2026-09-02T05:26:44.782865+00:00 ubuntu sshd-session[6614]: error: maximum authentication attempts exceeded for ninjax from 192.168.220.143 port 51958 ssh2
+2026-09-02T05:26:44.784859+00:00 ubuntu sshd-session[6614]: Disconnecting authenticating user ninjax 192.168.220.143 port 51958: Too many authentication failures
+2026-09-02T05:26:44.784943+00:00 ubuntu sshd-session[6614]: PAM 5 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.220.143
+2026-09-02T05:26:44.785027+00:00 ubuntu sshd-session[6614]: PAM service(sshd) ignoring max retries; 6 > 3
+
+Note: A subsequent successful login by user "ninja" was observed later in the
+log (session opened via sudo) which was legitimate login attemp done by me.
