@@ -31,28 +31,4 @@ performed against systems outside this lab.
 screenshots/                Supporting evidence images
 ```
 
-## Progress Checklist
 
-- [ ] Lab Setup (Wazuh server + Windows/Linux agents reporting)
-- [ ] Architecture diagram
-- [ ] Windows offensive activities (min 3)
-- [ ] Linux offensive activities (min 3)
-- [ ] Wazuh detection/investigation write-ups
-- [ ] IOC analysis (13 indicators)
-- [ ] Risk assessment (top 5 findings)
-- [ ] Defensive recommendations
-- [ ] Final report compiled
-- [ ] Presentation prepared
-
-## Marking Scheme (100 total)
-
-| Component                  | Marks |
-|-----------------------------|-------|
-| Lab Setup                   | 10    |
-| Offensive Security Testing  | 20    |
-| Detection & Investigation   | 25    |
-| Threat Intelligence / IOC   | 15    |
-| Risk Assessment             | 10    |
-| Defensive Recommendations   | 10    |
-| Report                      | 5     |
-| Presentation                | 5     |

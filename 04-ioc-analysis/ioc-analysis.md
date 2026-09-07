@@ -13,10 +13,11 @@ the original IOC list — this is expected VT behaviour, not an error.
 
 | Original MD5 | VT Result | Finding | Confidence | Malware Family |
 |---|---|---|---|---|
-| 07763588cf68716a159469ec006183b8 | (resolves to SHA-256 aad37e1e...5fa29) | **Malicious** — 5/62 vendors | Medium | **Mirai** (ELF, RISC-V binary). McAfee/Microsoft/Rising/TrendMicro flag as Backdoor.Mirai / Backdoor:Linux/Mirai.GS |
-| 24bd24cf3f7207a990672f3c7f552bbe | (resolves to SHA-256 f701f061...0d3339ca) | **Malicious** — 39/68 vendors | **High** | **Yogi trojan/dropper** (Windows .exe). Multiple vendors: Trojan Dropper, Wacatac variant, CrowdStrike "malicious_confidence_100%" |
-| 4a09f8c92732d01c097d9a12cbbbc6da | (resolves to SHA-256 b5dc8167...2ba7b7ff7) | **Malicious** — 29/62 vendors | **High** | **DDoS trojan / "multiverze"** (ELF, ARM architecture). Flagged as Linux DDoS Agent by multiple vendors (Avast, BitDefender, ESET-NOD32) |
-| 5c943b9ee464e13570b4d57e643f6a93 | *(not resolved — recheck manually if time permits)* | — | — | — |
+| 07763588cf68716a159469ec006183b8 | Malicious (5/62 vendors) | Malicious | Medium | Mirai (ELF/RISC-V backdoor) |
+| 24bd24cf3f7207a990672f3c7f552bbe | Malicious (39/68 vendors) | Malicious | High | Yogi trojan/dropper (Windows) |
+| 4a09f8c92732d01c097d9a12cbbbc6da | Malicious (29/62 vendors) | Malicious | High | DDoS trojan/multiverze (ELF/ARM) |
+| 5c943b9ee464e13570b4d57e643f6a93 | Malicious (24/60 vendors) | Malicious | High | Zbot trojan/dropper (VBS) |
+
 
 **Analysis:** Three of the four hashes are confirmed malicious, spanning both
 Windows (trojan/dropper) and Linux/embedded (Mirai, DDoS agent for ARM/
@@ -28,21 +29,21 @@ from multiple unrelated threat feeds rather than one incident.
 
 | IOC | Finding | Confidence | ISP / Location | Notes |
 |---|---|---|---|---|
-| 13.115.104.132 | No abuse reports | Low | AWS Tokyo | Likely legitimate cloud infra; low standalone risk |
-| 3.108.37.115 | *(not checked — likely AWS Mumbai range)* | — | — | Recheck if time permits |
-| 200.175.61.207 | **Malicious — 100% confidence** (6,730 reports) | **High** | Telefonica Brasil, Florianópolis | Fixed-line ISP IP with very high report volume — likely compromised residential/business connection used for attacks |
-| 187.120.72.90 | **Suspicious — 62% confidence** (245 reports) | Medium | MASTER S/A, Passos, Brazil | Fixed-line ISP; moderate report volume |
-| 185.246.128.25 | **Malicious — 100% confidence** (6,781 reports) | **High** | w1n ltd, Stockholm, Sweden | Data center/hosting IP — high-volume abuse source, consistent with scanning/attack infrastructure |
-| 185.226.197.7 | **Malicious — 100% confidence** (9,357 reports) | **High** | ICG-4-ZEN-AMS, Netherlands | Hostname resolves to `internet-census.org` — associated with mass internet-wide scanning activity |
-| 184.105.247.251 | Reported, but attributable to legitimate research | Low | **The Shadowserver Foundation**, Fremont, CA | Shadowserver is a well-known non-profit security research organization that performs internet-wide scanning for threat intelligence and vulnerability notification purposes. High report counts on Shadowserver IPs are extremely common and typically reflect its scanning activity being mistaken for malicious probing, not actual compromise. **Recommend Low/informational confidence, not High**, despite any raw report count — a good example of why confidence should not be based on report volume alone. |
+| 13.115.104.132 | No abuse reports | Low | AWS Tokyo | AWS Tokyo likely legitimate cloud infra |
+| 3.108.37.115 | No abuse reports | Low | Data Center/Web Hosting/Transit | — |
+| 200.175.61.207 | Malicious, 100% (6,730 reports) | High | Telefonica Brazil | Fixed-line ISP |
+| 187.120.72.90 | Suspicious, 62% (245 reports) | Medium | Brazil fixed-line ISP | — |
+| 185.246.128.25 | Malicious, 100% (6,781 reports) | High | Data center/hosting, Sweden | — |
+| 185.226.197.7 | Malicious, 100% (9,357 reports) | High | Netherlands | Hostname tied to internet-census.org |
+| 184.105.247.251 | Reported, but legitimate research | Low | The Shadowserver Foundation | False-positive risk |
 
 ## URLs
 
 | IOC | Finding | Confidence | Associated Malware | Detection Method |
 |---|---|---|---|---|
-| http://210.208.111.2:36838/i | *(not directly checked — pattern strongly resembles C2 staging)* | Medium (inferred) | Raw IP + non-standard high port + short path is a classic malware C2/payload-delivery pattern | DNS/Web/Proxy |
-| https://mediafire.com/file/pfxpcqrssrvi4h4/file | *(not directly checked)* | — | Legitimate file-hosting service commonly abused to host malware payloads, evading domain-reputation blocklists | DNS/Web/Proxy |
-| http://115.55.183.61:57147/Mozi.a | **Malicious — confirmed** | **High** | **Mozi botnet** (P2P IoT botnet derived from Mirai/Gafgyt/IoT Reaper source code). Targets routers/DVRs via weak Telnet credentials; used for DDoS, data exfiltration, remote command execution | DNS/Web/Proxy; unusual outbound Telnet/UDP port 14737 traffic on IoT devices |
+| http://210.208.111.2:36838/i | Activity related to MIRAI, MOZI | Medium | Malicious (alphaMountain.ai) | — |
+| https://mediafire.com/file/pfxpcqrssrvi4h4/file | File Sharing/Storage, Media Sharing (alphaMountain.ai) | Low | Legitimate host commonly abused for payload delivery | — |
+| http://115.55.183.61:57147/Mozi.a | Malicious confirmed | High | Mozi (P2P IoT botnet, Mirai/Gafgyt/IoT Reaper lineage) | — |
 
 ## Key Findings Summary
 
