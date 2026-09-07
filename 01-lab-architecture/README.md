@@ -2,9 +2,6 @@
 
 ## Network Diagram
 
-_(Add diagram image here — draw.io / diagrams.net export as PNG, or an
-excalidraw sketch. Once we build the lab I'll help you generate this.)_
-
 ```
 [Kali Linux - Attacker]
         |
